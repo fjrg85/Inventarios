@@ -1,0 +1,39 @@
+<%- include('partials/head'); -%> <!-- cargamos head ejs -->
+<script src="/resources/js/funcionescliente.js" defer></script>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/resources/css/tablas.css">
+<%- include('partials/header'); -%> <!-- cargamos header ejs -->
+
+    <div class="contenedor2">
+        <% if (login) { %>
+            <div class="container2">   
+                <table class="tablab tablab-bordered tablab-striped text-center mt-4">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th scope="col">ID</th>
+                            <th scope="col">NOMBRE</th>          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach((category)=>{ %>
+                            <tr>  
+                                <td><%= category.id %></td>
+                                <td><%= category.nombre %></td>
+                            </tr>                                   
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="inline">             
+                <a href="/admin" class="btn-cancel">Volver</a>           
+            </div>
+        
+        <% } else { %>
+            <h1><strong><%= name %></strong></h1>   
+                <a href="login" class="a-login">Iniciar sesión</a>
+        <% } %>
+
+    </div>
+    
+<%- include('partials/footer'); -%>  <!-- cargamos footer ejs -->

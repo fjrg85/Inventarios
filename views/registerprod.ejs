@@ -1,0 +1,57 @@
+<%- include('partials/head'); -%> <!-- cargamos head ejs -->
+<%- include('partials/header'); -%> <!-- cargamos header ejs -->
+
+    <div class="contenedor2">
+        <% if (login) { %>
+            <div class="register-form">
+                <h1>Registro de Productos</h1>
+                <form action="/registerprod" method="POST">
+                    <label for="name">Nombre</label>
+                        <input type="text" name="name" required tabindex="1" autofocus>
+                    <label for="marca">Marca</label>
+                        <input type="text" name="marca" required tabindex="2">
+                    <label for="price">Precio</label>
+                        <input type="text" name="price" required tabindex="3">
+                    <label for="cost">Costo</label>
+                        <input type="text" name="cost" required tabindex="4">
+                    
+                    <label for="location">Localización</label>                        
+                        <select id="idloc" name="idloc" class="select-css" tabindex="5">
+                            
+                        </select>
+                        
+                    <br> 
+                    <label for="pass">Contraseña</label>
+                        <input type="password" name="pass" required tabindex="6">
+                    <div class="inline">             
+                        <a href="/admin" class="btn-cancel">Cancel</a><input type="submit" class="btn-save" value="Save">           
+                    </div>
+                </form>		
+            </div>
+    
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+            <!-- si nuestro alert es diferente de undefined -->
+            <% if (typeof alert != "undefined")  { %>
+                <!-- Código script de Sweet Alert 2 donde asignamos la información que le hemos pasado en el objeto
+                Muestra el mensaje durante un 1.5s y redirige a la ruta principal-->
+                <script>
+                    Swal.fire({
+                        title:'<%= alertTitle %>',
+                        text:'<%= alertMessage %>',
+                        icon:'<%= alertIcon %>',
+                        showConfirmButton: <%= showConfirmButton %>,
+                        timer: <%= timer %>
+                    }).then(()=>{
+                        window.location='/<%= ruta %>'
+                    })
+                </script>
+            <% } %>
+        <% } else { %>
+                <a href="login" class="a-login">Iniciar sesión</a>
+        <% } %>
+    </div>
+
+
+    
+<%- include('partials/footer'); -%>  <!-- cargamos footer ejs -->

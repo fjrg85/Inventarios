@@ -1,0 +1,41 @@
+<%- include('partials/head'); -%> <!-- cargamos head ejs -->
+<%- include('partials/header'); -%> <!-- cargamos header ejs -->
+
+    <div class="contenedor2">
+        <% if (login) { %>
+            <div class="register-form">
+                <h1>Registro de Categorías</h1>
+                <form action="/registercat" method="POST">
+                    <label for="name">Nombre</label>
+                        <input type="text" name="name" required tabindex="1" autofocus>
+                    <div class="inline">             
+                        <a href="/admin" class="btn-cancel">Cancel</a><input type="submit" class="btn-save" value="Save">           
+                    </div>
+                </form>		
+            </div>
+        
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+            <!-- si nuestro alert es diferente de undefined -->
+            <% if (typeof alert != "undefined")  { %>
+                <!-- Código script de Sweet Alert 2 donde asignamos la información que le hemos pasado en el objeto
+                Muestra el mensaje durante un 1.5s y redirige a la ruta principal-->
+                <script>
+                    Swal.fire({
+                        title:'<%= alertTitle %>',
+                        text:'<%= alertMessage %>',
+                        icon:'<%= alertIcon %>',
+                        showConfirmButton: <%= showConfirmButton %>,
+                        timer: <%= timer %>
+                    }).then(()=>{
+                        window.location='/<%= ruta %>'
+                    })
+                </script>
+            <% } %>
+        <% } else { %>
+                <a href="login" class="a-login">Iniciar sesión</a>
+        <% } %>
+
+    </div>
+    
+<%- include('partials/footer'); -%>  <!-- cargamos footer ejs -->

@@ -1,0 +1,43 @@
+<%- include('partials/head'); -%> <!-- cargamos head ejs -->
+    <script src="/resources/js/funcionescliente.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/resources/css/tablas.css">
+<%- include('partials/header'); -%> <!-- cargamos header ejs -->
+
+    
+    <div class="contenedor2">
+        <h1>Panel de administración</h1>
+        <!-- comprueba si login es igual a true -->
+        <% if (login) { %>                
+            <h1>Usuario conectado: <br><strong><%= name %></strong></h1>   <!-- importa el valor de name pasado en el objeto de render --> 
+            
+            <div class="register-form">
+                <a href="product" class="btn-register">Listar Productos</a>
+                <a href="registroprod" class="btn-register">Registro Productos</a>
+                <a href="category" class="btn-register">Listar Categorías</a>
+                <a href="registrocat" class="btn-register">Registro Categorías</a>
+                <a href="provider" class="btn-register">Listar Proveedores</a>
+                <a href="registroprov" class="btn-register">Registro Proveedores</a>
+                <a href="location" class="btn-register">Listar Localizaciones</a>
+                <a href="minprod" class="btn-register">Productos bajo nivel de stock</a>
+                <a href="registroloc" class="btn-register">Registro Localizaciones</a>
+                
+                <% if (rol == '1') { %>
+                    <a href="users" class="btn-register">Listar Usuarios</a>
+                    <a href="registrousers" class="btn-register">Registro Usuarios</a>
+                <% } %>
+            </div>
+            
+        <%} else { %>
+            <h1><strong><%= name %></strong></h1>   
+            <a href="login" class="a-login">Iniciar sesión</a>
+        <% } %>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<%- include('partials/footer'); -%>  <!-- cargamos footer ejs -->
