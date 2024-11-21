@@ -4,6 +4,7 @@ const mysql = require('mysql');
 //creamos la conexión a la BBDD y le asignamos las variables de entorno
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
